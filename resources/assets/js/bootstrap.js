@@ -4,6 +4,7 @@ import ClickOutside from 'vue-click-outside'
 import * as linkify from 'linkifyjs'
 import linkifyElement from 'linkifyjs/element'
 import mention from 'linkifyjs/plugins/mention'
+import Pusher from "pusher-js"
 
 mention(linkify)
 
