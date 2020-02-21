@@ -18,13 +18,11 @@ window.axios.defaults.headers.common = {
   'X-Requested-With': 'XMLHttpRequest'
 }
 
-if (typeof io !== 'undefined') {
-  window.Echo = new Echo({
+window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.ENV.MIX_PUSHER_KEY,
     namespace: 'App.Base.Events'
-  })
-}
+})
 
 window.Vue.mixin({
   methods: {

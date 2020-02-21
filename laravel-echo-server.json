@@ -3,25 +3,35 @@
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [
 		{
-			"appId": "29ba136605479ed1",
-			"key": "e814d4d61f0682dd05eac175d75f566b"
+			"appId": "bec9d450fbf2af78",
+			"key": "adeb2fe782d9d3dcd955ac5a88aff184"
 		}
 	],
 	"database": "redis",
 	"databaseConfig": {
-		"redis": {
-			"port": "6379",
-			"host": "127.0.0.1"
-		},
+		"redis": {},
 		"sqlite": {
 			"databasePath": "/database/laravel-echo-server.sqlite"
 		}
 	},
 	"devMode": false,
-	"host": "",
+	"host": null,
 	"port": "6001",
 	"protocol": "https",
 	"socketio": {},
+	"secureOptions": 67108864,
 	"sslCertPath": "/etc/nginx/ssl/pm.triplenerdscore.net/729014/server.crt",
-	"sslKeyPath": "/etc/nginx/ssl/pm.triplenerdscore.net/729014/server.key"
+	"sslKeyPath": "/etc/nginx/ssl/pm.triplenerdscore.net/729014/server.key",
+	"sslCertChainPath": "",
+	"sslPassphrase": "",
+	"subscribers": {
+		"http": true,
+		"redis": true
+	},
+	"apiOriginAllow": {
+		"allowCors": false,
+		"allowOrigin": "",
+		"allowMethods": "",
+		"allowHeaders": ""
+	}
 }
