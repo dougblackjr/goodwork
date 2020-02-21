@@ -20,8 +20,8 @@ window.axios.defaults.headers.common = {
 
 if (typeof io !== 'undefined') {
   window.Echo = new Echo({
-    broadcaster: 'socket.io',
-    host: window.location.hostname + ':6001',
+    broadcaster: 'pusher',
+    key: process.ENV.MIX_PUSHER_KEY,
     namespace: 'App.Base.Events'
   })
 }
