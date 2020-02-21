@@ -20,7 +20,7 @@ window.axios.defaults.headers.common = {
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: process.ENV.MIX_PUSHER_KEY,
+    key: process.env.MIX_PUSHER_KEY,
     namespace: 'App.Base.Events'
 })
 
