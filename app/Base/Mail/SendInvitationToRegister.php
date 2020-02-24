@@ -9,6 +9,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Str;
 
 class SendInvitationToRegister extends Mailable
 {
@@ -30,8 +31,16 @@ class SendInvitationToRegister extends Mailable
      */
     public function build(Request $request)
     {
-        $token = encrypt($request->role);
-        Token::create(['token' => $token, 'email' => $request->email, 'role_id'=> $request->role]);
+        $token = Str::random(30);
+
+        Token::create(
+            [
+                'token' => $token,
+                'email' => $request->email,
+                'role_id'=> $request->role
+            ]
+        );
+        
         $setting = Setting::first();
 
         return $this->markdown('emails.invite')
