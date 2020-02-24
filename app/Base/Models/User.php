@@ -24,6 +24,36 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function profile()
+    {
+
+        $profileData = UserProfile::where('user_id', $this->id)->get();
+
+        $data = new \stdClass;
+
+        $profileData->each(function($p) use (&$data) {
+            $data->{$p->key} = $p->value;
+        });
+
+        return $data;
+
+    }
+
+    public function profileKeys()
+    {
+
+        $profileData = UserProfile::where('user_id', $this->id)->get();
+
+        $data = [];
+
+        $data = $profileData->map(function($p) {
+            return $p->key;
+        });
+
+        return $data->toArray();
+
+    }
+
     public function getRouteKeyName()
     {
         return 'username';
