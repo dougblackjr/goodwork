@@ -13,16 +13,28 @@ class HomeController extends Controller
      */
     public function index(TaskRepository $repository)
     {
-        $currentWork = $repository->userCurrentlyWorkingOn(auth()->user()->id);
-        auth()->user()->setAppends(['unread_direct_messages']);
+
+        $user = auth()->user();
+
+        $currentWork = $repository->userCurrentlyWorkingOn($user->id);
+        $currentAssigned = $repository->userCurrentlyAssigned($user->id);
+
+        $user->setAppends(['unread_direct_messages']);
 
         if (request()->segment(1) === 'api') {
             return response()->json([
-                'status'       => 'success',
-                'current_work' => $currentWork,
+                'status'            => 'success',
+                'current_work'      => $currentWork,
+                'current_assigned'  => $currentAssigned,
             ]);
         }
 
-        return view('home', ['currentWork' => $currentWork]);
+        return view(
+            'home',
+            [
+                'currentWork'       => $currentWork,
+                'currentAssigned'   => $currentAssigned,
+            ]
+        );
     }
 }

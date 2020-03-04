@@ -63,4 +63,13 @@ class TaskRepository
                            ->orderBy('due_on')
                            ->get();
     }
+
+    public function userCurrentlyAssigned(int $userId)
+    {
+        return $this->model->where('assigned_to', $userId)
+                           ->with('taskable:id,name')
+                           ->with('steps')
+                           ->orderBy('due_on', 'desc')
+                           ->get();
+    }
 }

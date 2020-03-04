@@ -22,6 +22,7 @@ export default new Vuex.Store({
 
   state: {
     currentWork, // eslint-disable-line
+    currentAssigned,
     projects: [],
     teams: [],
     offices: [],
