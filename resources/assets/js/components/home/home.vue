@@ -53,28 +53,28 @@
 					What's Assigned 💣
 				</div>
 				<div v-if="currentAssigned.length === 0" class="mt-4">There is currently no work assigned to you!</div>
-				<a v-if="currentAssigned.length !== 0" :href="'/' + currentAssigned[0].taskable_type + 's/' + currentAssigned[0].taskable_id + '?tool=tasks&id=' + currentAssigned[0].id" class="block mt-4 p-4 rounded-lg bg-gray-100 border-2 border-indigo-300 cursor-pointer">
+				<a v-if="currentAssigned.length !== 0" v-for="c in currentAssigned" :key="c.id" :href="'/' + c.taskable_type + 's/' + c.taskable_id + '?tool=tasks&id=' + c.id" class="block mt-4 p-4 rounded-lg bg-gray-100 border-2 border-indigo-300 cursor-pointer">
 					<div class="flex items-center">
 						<div class="pr-2 text-sm">Due on: </div>
 						<div class="text-sm rounded-full px-3 py-1 bg-indigo-200 text-indigo-700 font-semibold inline">
-							{{ dueOn(currentAssigned[0].due_on) }}
+							{{ dueOn(c.due_on) }}
 						</div>
 					</div>
 					<div class="text-2xl font-medium">
-						{{ currentAssigned[0].name }}
+						{{ c.name }}
 					</div>
 					<div class="text-lg">
-						{{ currentAssigned[0].notes }}
+						{{ c.notes }}
 					</div>
 					<div class="py-4">
 						<div class="text-lg font-medium border-b-2 pb-1">
 							Progress
 						</div>
 						<!-- Progress list -->
-						<div v-if="currentAssigned.length !== 0 && currentAssigned[0].steps.length === 0" class="pt-2">
+						<div v-if="currentAssigned.length !== 0 && c.steps.length === 0" class="pt-2">
 							No progress update yet
 						</div>
-						<div v-for="step in currentAssigned[0].steps" class="bg-white rounded shadow px-4 py-2 my-4">
+						<div v-for="step in c.steps" class="bg-white rounded shadow px-4 py-2 my-4">
 							<div class="text-xs text-indigo-700">
 								<span class="text-gray-700">Last updated:</span> {{ step.updated_at }}
 							</div>

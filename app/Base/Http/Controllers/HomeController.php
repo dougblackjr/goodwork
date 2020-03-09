@@ -3,6 +3,7 @@
 namespace App\Base\Http\Controllers;
 
 use App\TaskManager\Repositories\TaskRepository;
+use App\Discussion\Repositories\DiscussionRepository;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,8 @@ class HomeController extends Controller
 
         $currentWork = $repository->userCurrentlyWorkingOn($user->id);
         $currentAssigned = $repository->userCurrentlyAssigned($user->id);
+
+        // $discussionRepository = new DiscussionRepository;
 
         $user->setAppends(['unread_direct_messages']);
 
